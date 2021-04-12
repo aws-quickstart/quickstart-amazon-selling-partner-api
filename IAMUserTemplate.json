@@ -1,0 +1,64 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Parameters": {
+        "IAMUserName": {
+            "Default": "IAMUser",
+            "Description": "Enter IAM User Name",
+            "Type": "String",
+            "MinLength": "1",
+            "ConstraintDescription": "must be a unique name"
+        },
+        "IAMPolicyName": {
+            "Default": "IAMPolicy",
+            "Description": "Enter IAM Policy Name",
+            "Type": "String",
+            "MinLength": "1",
+            "ConstraintDescription": "must be a unique name"
+        }
+    },
+    "Resources": {
+        "IAMUser": {
+            "Type": "AWS::IAM::User",
+            "Properties": {
+                "UserName": {
+                    "Ref": "IAMUserName"
+                }
+            }
+        },
+        "IAMPolicy": {
+            "Type": "AWS::IAM::Policy",
+            "Properties": {
+                "PolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Effect": "Allow",
+                            "Action": "execute-api:Invoke",
+                            "Resource": "arn:aws:execute-api:*:*:*"
+                        }
+                    ]
+                },
+                "PolicyName": {
+                    "Ref": "IAMPolicyName"
+                },
+                "Users": [
+                    {
+                        "Ref": "IAMUserName"
+                    }
+                ]
+            },
+            "DependsOn": [
+                "IAMUser"
+            ]
+        },
+        "IAMAccessKey": {
+  			"Type" : "AWS::IAM::AccessKey",
+  			"Properties" : {
+  				"UserName" : {"Ref":"IAMUserName"}
+  			},
+  			"DependsOn": [
+                "IAMUser"
+            ]
+        }
+    }
+}
