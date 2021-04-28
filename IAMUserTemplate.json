@@ -14,6 +14,13 @@
             "Type": "String",
             "MinLength": "1",
             "ConstraintDescription": "must be a unique name"
+        },
+        "S3BucketName": {
+            "Default": "S3Bucket",
+            "Description": "Enter a globally unique S3 Bucket Name",
+            "Type": "String",
+            "MinLength": "1",
+            "ConstraintDescription": "Bucket name must be unique globally. Please add a unique value in the bucket name"
         }
     },
     "Resources": {
@@ -25,39 +32,138 @@
                 }
             }
         },
-        "IAMPolicy": {
+        "SPAPIIAMPolicy": {
             "Type": "AWS::IAM::Policy",
             "Properties": {
                 "PolicyDocument": {
                     "Version": "2012-10-17",
-                    "Statement": [
-                        {
-                            "Effect": "Allow",
-                            "Action": "execute-api:Invoke",
-                            "Resource": "arn:aws:execute-api:*:*:*"
-                        }
-                    ]
+                    "Statement": [{
+                        "Effect": "Allow",
+                        "Action": "execute-api:Invoke",
+                        "Resource": "arn:aws:execute-api:*:*:*"
+                    }]
                 },
                 "PolicyName": {
                     "Ref": "IAMPolicyName"
                 },
-                "Users": [
-                    {
-                        "Ref": "IAMUserName"
-                    }
-                ]
+                "Users": [{
+                    "Ref": "IAMUserName"
+                }]
             },
             "DependsOn": [
                 "IAMUser"
             ]
         },
         "IAMAccessKey": {
-  			"Type" : "AWS::IAM::AccessKey",
-  			"Properties" : {
-  				"UserName" : {"Ref":"IAMUserName"}
-  			},
-  			"DependsOn": [
+            "Type": "AWS::IAM::AccessKey",
+            "Properties": {
+                "UserName": {
+                    "Ref": "IAMUserName"
+                }
+            },
+            "DependsOn": [
                 "IAMUser"
+            ]
+        },
+        "LambdaExecutionRole": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+                "AssumeRolePolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [{
+                        "Effect": "Allow",
+                        "Principal": {
+                            "Service": "lambda.amazonaws.com"
+                        },
+                        "Action": "sts:AssumeRole"
+                    }]
+                },
+                "Policies": [{
+                    "PolicyName": "SPDSLambdaPolicy",
+                    "PolicyDocument": {
+                        "Version": "2012-10-17",
+                        "Statement": [{
+                            "Sid": "VisualEditor0",
+                            "Effect": "Allow",
+                            "Action": ["iam:CreateAccessKey", "s3:PutObject", "s3:CreateBucket","logs:CreateLogGroup","logs:CreateLogStream","logs:PutLogEvents"],
+                            "Resource": "*"
+                        }]
+                    }
+                }],
+                "RoleName": "SPAPILambdaExecutionRole"
+            },
+            "DependsOn": [
+                "IAMAccessKey"
+            ]
+        },
+        "CreateSecretKeyFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+                "Handler": "index.lambda_handler",
+                "Role": {
+                    "Fn::GetAtt": ["LambdaExecutionRole", "Arn"]
+                },
+                "Environment": {
+                    "Variables": {
+                        "iamuser": {
+                            "Ref": "IAMUserName"
+                        },
+                        "bucketName": {
+                            "Ref": "S3BucketName"
+                        }
+                    }
+                },
+                "Code": {
+                    "ZipFile": {
+                        "Fn::Join": ["\n", [
+                            "import json",
+                            "import boto3",
+                            "import os",
+                            "\n",
+                            "def lambda_handler(event, context):",
+                            "\n",
+                            "   client = boto3.client('iam')",
+                            "   response = client.create_access_key(",
+                            "       UserName=os.environ['iamuser']",
+                            "   )",
+                            "\n",
+                            "   s3 = boto3.client('s3')",
+                            "   bucketName = os.environ['bucketName']",
+                            "   key = \"IAM User Keys.txt\"",
+                            "   responses3 = s3.create_bucket(",
+                            "       Bucket = bucketName,",
+                            "       CreateBucketConfiguration = {'LocationConstraint':'us-west-2'}",
+                            "   )",
+                            "   accessKey = response['AccessKey']['AccessKeyId']",
+                            "   secretKey = response['AccessKey']['SecretAccessKey']",
+                            "   data = \"Access Key = %s and Secret Key = %s\" % (accessKey ,secretKey)",
+                            "\n",
+                            "   putresponse = s3.put_object(",
+                            "       Bucket = bucketName,",
+                            "       Key = key,",
+                            "       Body = data",
+                            "   )",
+                            "\n",
+                            "   return {",
+                            "       'statusCode': 200,",
+                            "       'body': json.dumps('Hello from Lambda!')",
+                            "   }"
+
+                        ]]
+                    }
+                },
+                "Runtime": "python3.8"
+            }
+        },
+        "InvokeLambda": {
+            "Type": "Custom::InvokeLambda",
+            "Properties": {
+                "ServiceToken": {
+                    "Fn::GetAtt": ["CreateSecretKeyFunction", "Arn"]
+                }
+            },
+            "DependsOn": [
+                "CreateSecretKeyFunction"
             ]
         }
     }
