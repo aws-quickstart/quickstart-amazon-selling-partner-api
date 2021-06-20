@@ -63,46 +63,22 @@
                             "Action": ["sts:AssumeRole","logs:CreateLogGroup","logs:CreateLogStream","logs:PutLogEvents"],
                             "Resource": "*"
                         }]
-                    }
-                }],
+                    },
+                }
+            ],
                 "RoleName": "SPAPILambdaRole"
             }
         },
         "LambdaFunction": {
             "Type": "AWS::Lambda::Function",
             "Properties": {
-                "Handler": "index.lambda_handler",
+                "Handler": "lambda_function.lambda_handler",
                 "Role": {
                     "Fn::GetAtt": ["LambdaExecutionRole", "Arn"]
                 },
                 "Code": {
-                    "ZipFile": {
-                        "Fn::Join": ["\n", [
-                            "import json",
-                            "import boto3",
-                            "import os",
-                            "\n",
-                            "def lambda_handler(event, context):",
-                            "\n",
-                            "   client = boto3.client('sts')",
-                            "   aws_account_id = context.invoked_function_arn.split(\":\")[4]",
-                            "   iamrole = 'arn:aws:iam::'+aws_account_id+':role/SPAPIIAMRole'",
-                            "   response = client.assume_role(",
-                            "       RoleArn= iamrole,",
-                            "       RoleSessionName='SPAPIRoleSession'",
-                            "   )",
-                            "\n",
-                            "   print (\"Access Key =\", response['Credentials']['AccessKeyId'])",
-                            "   print (\"Secret Key =\", response['Credentials']['SecretAccessKey'])",
-                            "   print (\"Session Token =\", response['Credentials']['SessionToken'])",
-                            "\n",
-                            "   return {",
-                            "       'statusCode': 200,",
-                            "       'body': json.dumps('Hello from Lambda!')",
-                            "   }"
-
-                        ]]
-                    }
+                    "S3Bucket": "quickstart-drugved",
+                    "S3Key": "my-deployment-package.zip"
                 },
                 "Runtime": "python3.8"
             }
