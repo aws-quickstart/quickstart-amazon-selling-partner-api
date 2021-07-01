@@ -53,6 +53,7 @@
                         "Action": "sts:AssumeRole"
                     }]
                 },
+                "ManagedPolicyArns" : [{"Fn::Sub":"arn:${AWS::Partition}:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"}],
                 "Policies": [{
                     "PolicyName": "SPDSLambdaPolicy",
                     "PolicyDocument": {
@@ -60,8 +61,8 @@
                         "Statement": [{
                             "Sid": "VisualEditor0",
                             "Effect": "Allow",
-                            "Action": ["sts:AssumeRole","logs:CreateLogGroup","logs:CreateLogStream","logs:PutLogEvents"],
-                            "Resource": "*"
+                            "Action": ["sts:AssumeRole"],
+                            "Resource": {"Fn::GetAtt": ["SPAPIIAMRole", "Arn"]}
                         }]
                     },
                 }
