@@ -32,7 +32,7 @@
                     "Statement": [{
                         "Effect": "Allow",
                         "Action": "execute-api:Invoke",
-                        "Resource": "arn:aws:execute-api:*:*:*"
+                        "Resource": {"Fn::Sub":"arn:${AWS::Partition}:execute-api:*:*:*"}
                     }]
                 },
                 "PolicyName": "SellingPartnerAPI"
