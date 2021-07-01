@@ -1,6 +1,6 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
-    "Description": "This template will create an IAM Role and a Lambda Function to call the SP API endpoint. qs-1s22p74f7",
+    "Description": "This template will create an IAM Role and a Lambda Function to call the SP API endpoint. (qs-1s22p74f7)",
     "Resources": {
         "SPAPIIAMRole": {
             "Type" : "AWS::IAM::Role",
