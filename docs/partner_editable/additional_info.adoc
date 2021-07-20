@@ -1,11 +1,36 @@
 // Add steps as necessary for accessing the software, post-configuration, and testing. Don’t include full usage instructions for your software, but add links to your product documentation for that information.
 //Should any sections not be applicable, remove them
 
-== Test the deployment
-// If steps are required to test the deployment, add them here. If not, remove the heading
 
 == Post-deployment steps
 // If post-deployment steps are required, add them here. If not, remove the heading
+
+* Go to AWS IAM Role console https://console.aws.amazon.com/iam/home#/roles/SPAPIIAMRole[here] and note the "Role ARN" value that will be used to create app.
+* Go to your seller central account, "Develop Apps" page under "Apps & Services" menu and click on "+ Add new app client". 
+
+* Enter App Name and select API Type as "SP API" for pure SP API app. 
+
+* Paste the IAM Role ARN copied earlier.
+
+* Select the necessary roles for the application.
+
+* Configure Login and Redirect URLs on your application (Optional for private developers).
+
+* Click "Save and Exit".
+
+* Open Lambda function created by QuickStart and double-click on "lambda_function.py" to open up Lambda function code.
+
+* On the Developer console, you will be able to see your app client credentials by clicking on "View" in front of your application. Copy the "Client identifier" and "Client secret" values and paste it in the Lambda function code on line 26 and line 27.
+
+* On the developer console, you will be able to see your recently created application. Use this application to receive authorization from your seller using one of two authorization flows https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md#website-authorization-workflow["Website Workflow"] or https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md#self-authorization["Self-Authorization Workflow"] mentioned in the seller developer guide.
+
+* Once you receive authorization tokens from a seller, copy the "refresh_token" and paste it in the Lambda function code on line 32.
+
+* Click on "Deploy" to save changes to the Lambda function code.
+
+* Click on "Test" and add some name to "Event name". Click on "Create".
+
+* Click on "Test" to execute the Lambda function to run the sample code and to call SP API endpoints.
 
 == Best practices for using {partner-product-short-name} on AWS
 // Provide post-deployment best practices for using the technology on AWS, including considerations such as migrating data, backups, ensuring high performance, high availability, etc. Link to software documentation for detailed information.

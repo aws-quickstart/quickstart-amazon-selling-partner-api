@@ -1,0 +1,87 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Resources": {
+        "SPAPIIAMRole": {
+            "Type" : "AWS::IAM::Role",
+            "Properties" : {
+                "AssumeRolePolicyDocument" : {
+                    "Version": "2012-10-17",
+                    "Statement": [{
+                            "Effect": "Allow",
+                            "Principal": {
+                                "AWS": {  
+                                    "Fn::Join":[  
+                                        ":",
+                                        [  
+                                            "arn:aws:iam:",
+                                            {  
+                                                "Ref":"AWS::AccountId"
+                                            },
+                                            "root"
+                                        ]
+                                    ]
+                                }
+                            },
+                            "Action": "sts:AssumeRole",
+                            "Condition": {}
+                        }]
+                },
+                "Policies" : [ {
+                "PolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [{
+                        "Effect": "Allow",
+                        "Action": "execute-api:Invoke",
+                        "Resource": "arn:aws:execute-api:*:*:*"
+                    }]
+                },
+                "PolicyName": "SellingPartnerAPI"
+            }],
+                "RoleName" : "SPAPIIAMRole"
+            }
+        },
+        "LambdaExecutionRole": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+                "AssumeRolePolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [{
+                        "Effect": "Allow",
+                        "Principal": {
+                            "Service": "lambda.amazonaws.com"
+                        },
+                        "Action": "sts:AssumeRole"
+                    }]
+                },
+                "Policies": [{
+                    "PolicyName": "SPDSLambdaPolicy",
+                    "PolicyDocument": {
+                        "Version": "2012-10-17",
+                        "Statement": [{
+                            "Sid": "VisualEditor0",
+                            "Effect": "Allow",
+                            "Action": ["sts:AssumeRole","logs:CreateLogGroup","logs:CreateLogStream","logs:PutLogEvents"],
+                            "Resource": "*"
+                        }]
+                    },
+                }
+            ],
+                "RoleName": "SPAPILambdaRole"
+            }
+        },
+        "LambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+                "Handler": "lambda_function.lambda_handler",
+                "Role": {
+                    "Fn::GetAtt": ["LambdaExecutionRole", "Arn"]
+                },
+                "Code": {
+                    "S3Bucket": "quickstart-drugved",
+                    "S3Key": "my-deployment-package.zip"
+                },
+                "Runtime": "python3.8"
+            }
+        }
+    }
+}
