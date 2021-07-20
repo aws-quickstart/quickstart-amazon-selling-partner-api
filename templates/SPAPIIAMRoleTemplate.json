@@ -1,0 +1,89 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "This template will create an IAM Role and a Lambda Function to call the SP API endpoint. (qs-1s22p74f7)",
+    "Resources": {
+        "SPAPIIAMRole": {
+            "Type" : "AWS::IAM::Role",
+            "Properties" : {
+                "AssumeRolePolicyDocument" : {
+                    "Version": "2012-10-17",
+                    "Statement": [{
+                            "Effect": "Allow",
+                            "Principal": {
+                                "AWS": {  
+                                    "Fn::Join":[  
+                                        ":",
+                                        [  
+                                            "arn:aws:iam:",
+                                            {  
+                                                "Ref":"AWS::AccountId"
+                                            },
+                                            "root"
+                                        ]
+                                    ]
+                                }
+                            },
+                            "Action": "sts:AssumeRole",
+                            "Condition": {}
+                        }]
+                },
+                "Policies" : [ {
+                "PolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [{
+                        "Effect": "Allow",
+                        "Action": "execute-api:Invoke",
+                        "Resource": {"Fn::Sub":"arn:${AWS::Partition}:execute-api:*:*:*"}
+                    }]
+                },
+                "PolicyName": "SellingPartnerAPI"
+            }],
+                "RoleName" : "SPAPIIAMRole"
+            }
+        },
+        "LambdaExecutionRole": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+                "AssumeRolePolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [{
+                        "Effect": "Allow",
+                        "Principal": {
+                            "Service": "lambda.amazonaws.com"
+                        },
+                        "Action": "sts:AssumeRole"
+                    }]
+                },
+                "ManagedPolicyArns" : [{"Fn::Sub":"arn:${AWS::Partition}:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"}],
+                "Policies": [{
+                    "PolicyName": "SPDSLambdaPolicy",
+                    "PolicyDocument": {
+                        "Version": "2012-10-17",
+                        "Statement": [{
+                            "Sid": "VisualEditor0",
+                            "Effect": "Allow",
+                            "Action": ["sts:AssumeRole"],
+                            "Resource": {"Fn::GetAtt": ["SPAPIIAMRole", "Arn"]}
+                        }]
+                    },
+                }
+            ],
+                "RoleName": "SPAPILambdaRole"
+            }
+        },
+        "LambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+                "Handler": "lambda_function.lambda_handler",
+                "Role": {
+                    "Fn::GetAtt": ["LambdaExecutionRole", "Arn"]
+                },
+                "Code": {
+                    "S3Bucket": "quickstart-drugved",
+                    "S3Key": "my-deployment-package.zip"
+                },
+                "Runtime": "python3.8"
+            }
+        }
+    }
+}
