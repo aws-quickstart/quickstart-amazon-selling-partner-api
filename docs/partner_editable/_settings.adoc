@@ -18,7 +18,7 @@
 // for example, 1.25 hours, 2 hours, 2.5 hours.
 :deployment_time: 15 minutes / 60 minutes / 1.5 hours
 :default_deployment_region: us-east-1
-:parameters_as_appendix:
+// :parameters_as_appendix:
 // Uncomment the following two attributes if you are using an AWS Marketplace listing.
 // Additional content will be generated automatically based on these attributes.
 // :marketplace_subscription:
@@ -30,7 +30,7 @@
 // Uncomment the following attribute if you are deploying a Terraform Quick Start. Make sure to comment out :parameters_as_appendix: also.
 // :terraform_qs:
 // Uncomment the following two attributes if you are deploying a Terraform Quick Start. Make sure to comment out :parameters_as_appendix: also.
-// :no_parameters:
+:no_parameters:
 // :git_repo_url: https://example.com/
 // Uncomment the following attribute if you are deploying AWS Control Tower. 
 // :control_tower
