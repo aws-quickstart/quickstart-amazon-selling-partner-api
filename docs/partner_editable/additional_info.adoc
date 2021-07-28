@@ -32,17 +32,15 @@
 
 * Click on "Test" to execute the Lambda function to run the sample code and to call SP API endpoints.
 
-== Best practices for using {partner-product-short-name} on AWS
+== Best practices for using SP API on AWS
 // Provide post-deployment best practices for using the technology on AWS, including considerations such as migrating data, backups, ensuring high performance, high availability, etc. Link to software documentation for detailed information.
 
-_Add any best practices for using the software._
+* Please refer to https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md[Selling Partner API Developer Guide] for more information about SP API setup.
+
 
 == Security
 // Provide post-deployment best practices for using the technology on AWS, including considerations such as migrating data, backups, ensuring high performance, high availability, etc. Link to software documentation for detailed information.
 
-_Add any security-related information._
+* The use of IAM Role in SP API is a more secure way of interacting with the APIs.
+* The temporary credentials received from the IAM Role are valid for one hour. If someone gets access to the temporary credentials, it wouldnt cause much damage as it would be valid only for one hour.
 
-== Other useful information
-//Provide any other information of interest to users, especially focusing on areas where AWS or cloud usage differs from on-premises usage.
-
-_Add any other details that will help the customer use the software on AWS._

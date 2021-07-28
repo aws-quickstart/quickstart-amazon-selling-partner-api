@@ -4,7 +4,3 @@
 
 Make sure you are subscribed to Professional Selling Account in order to develop apps.
 You should have primary user credentials for Seller Central account to create and edit application on Seller Central.
-
-==== Prepare for the deployment
-
-_Describe any preparation required to complete the product build, such as obtaining licenses or placing files in S3_
