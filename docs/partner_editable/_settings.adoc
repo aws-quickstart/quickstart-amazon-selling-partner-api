@@ -1,6 +1,6 @@
 // Change the following attributes.
-:quickstart-project-name: quickstart-documentation-base
-:partner-product-name: Selling Partner API (SP-API)
+:quickstart-project-name: quickstart-amazon-selling-partner-api
+:partner-product-name: Amazon Selling Partner API (SP-API)
 // For the following attribute, if you have no short name, enter the same name as partner-product-name.
 :partner-product-short-name: SP API
 // If there's no partner, comment partner-company-name.

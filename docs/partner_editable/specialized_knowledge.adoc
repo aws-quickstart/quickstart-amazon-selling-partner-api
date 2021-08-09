@@ -3,5 +3,4 @@
 // Include links if helpful. 
 // You don't need to list AWS services or point to general info about AWS; the boilerplate already covers this.
 
-This Quick Start also assumes familiarity with Selling Partner APIs. You can find more information about the specific APIs and the use case guides in the following GitHub repository: https://github.com/amzn/selling-partner-api-docs
-
+This Quick Start assumes familiarity with Selling Partner APIs. You can find more information about the specific APIs and the use case guides in the https://github.com/amzn/selling-partner-api-docs[Selling Partner API GitHub repository].

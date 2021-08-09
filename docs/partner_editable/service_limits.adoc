@@ -4,5 +4,5 @@
 
 // Space needed to maintain table headers
 |AWS Identity and Access Management (IAM) roles |2
-|AWS Lambda Function |1
+|AWS Lambda functions |1
 |===

@@ -4,5 +4,5 @@
 
 This guide provides instructions for deploying the SP API Quick Start reference architecture on the AWS Cloud.
 
-This Quick Start is for users who would like to setup AWS resources and SP API configuration using the best practices. This Quick Start will allow you to deploy the SP API integration setup in a few clicks.
+This Quick Start is for users who want to setup AWS resources and SP API configuration using the best practices. This Quick Start will allow you to deploy the SP API integration setup in a few clicks.
 
