@@ -1,5 +1,18 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
+    "Description":"This template onboards your AWS account to interact with the Amazon Selling Partner API. An example lambda function is included. (qs-1s617385e)",
+    "Parameters":{
+      "QSS3BucketName":{
+          "Type":"String",
+
+            "Default":"aws-quickstart"
+      },
+      "QSS3KeyPrefix":{
+        "AllowedPattern": "^[0-9a-zA-Z-/]*$",
+        "Default": "quickstart-amazon-selling-partner-api/",
+        "Type":"String"
+      }
+    },
     "Resources": {
         "SPAPIIAMRole": {
             "Type" : "AWS::IAM::Role",
@@ -9,12 +22,12 @@
                     "Statement": [{
                             "Effect": "Allow",
                             "Principal": {
-                                "AWS": {  
-                                    "Fn::Join":[  
+                                "AWS": {
+                                    "Fn::Join":[
                                         ":",
-                                        [  
+                                        [
                                             "arn:aws:iam:",
-                                            {  
+                                            {
                                                 "Ref":"AWS::AccountId"
                                             },
                                             "root"
@@ -43,6 +56,7 @@
         "LambdaExecutionRole": {
             "Type": "AWS::IAM::Role",
             "Properties": {
+                "RoleName": "SPAPILambdaRole",
                 "AssumeRolePolicyDocument": {
                     "Version": "2012-10-17",
                     "Statement": [{
@@ -63,10 +77,9 @@
                             "Action": ["sts:AssumeRole","logs:CreateLogGroup","logs:CreateLogStream","logs:PutLogEvents"],
                             "Resource": "*"
                         }]
-                    },
+                    }
                 }
-            ],
-                "RoleName": "SPAPILambdaRole"
+            ]
             }
         },
         "LambdaFunction": {
@@ -77,11 +90,11 @@
                     "Fn::GetAtt": ["LambdaExecutionRole", "Arn"]
                 },
                 "Code": {
-                    "S3Bucket": "quickstart-drugved",
-                    "S3Key": "my-deployment-package.zip"
-                },
+                    "S3Bucket": {"Ref":"QSS3BucketName"},
+                    "S3Key": {"Fn::Sub":"${QSS3KeyPrefix}functions/packages/ExampleLambda/lambda.zip"
+                }},
                 "Runtime": "python3.8"
             }
         }
-    }
+}
 }
