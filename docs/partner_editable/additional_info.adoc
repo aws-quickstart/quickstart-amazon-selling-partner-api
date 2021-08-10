@@ -5,18 +5,26 @@
 == Post-deployment steps
 // If post-deployment steps are required, add them here. If not, remove the heading
 
-* Go to AWS IAM Role console https://console.aws.amazon.com/iam/home#/roles/SPAPIIAMRole[here] and note the "Role ARN" value that will be used to create app.
-* Go to your seller central account, "Develop Apps" page under "Apps & Services" menu and click on "+ Add new app client". 
+=== Obtain an IAM role ARN
 
-* Enter App Name and select API Type as "SP API" for pure SP API app. 
+. Open the https://console.aws.amazon.com/iam/[AWS IAM console].
+. In the navigation pane, choose *Roles*.
+. Choose the name of the role that you will use to create the application.
+. Copy the role Amazon Resource Number (ARN).
 
-* Paste the IAM Role ARN copied earlier.
+=== Register an app on Seller Central
 
-* Select the necessary roles for the application.
+. Sign into your Seller Central https://sellercentral.amazon.com/[account].
+. Choose *Develop Apps* from the *Apps & Services* menu.
+. Choose *Add new app client*. 
+. On the *App registration* page, enter an app name.
+. Choose *SP API* from the *API Type* drop-down list.
+. For *IAM ARN*, enter the role ARN you copied previously.
+. Select the pertinent application roles.
+. Enter OAuth login and redirect URIs. These parameters are optional for private seller and vendor applications.
+. Choose *Save and exit*.
 
-* Configure Login and Redirect URLs on your application (Optional for private developers).
-
-* Click "Save and Exit".
+=== Edit the AWS Lambda function
 
 * Open Lambda function created by QuickStart and double-click on "lambda_function.py" to open up Lambda function code.
 

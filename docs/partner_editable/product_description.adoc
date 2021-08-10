@@ -2,6 +2,7 @@
 // Briefly describe the software. Use consistent and clear branding. 
 // Include the benefits of using the software on AWS, and provide details on usage scenarios.
 
-Selling Partner API (SP-API) is a modernized suite of REST APIs utilizing standards that today's developers expect, while making it as simple as possible to migrate from our legacy Amazon Marketplace Web Service (Amazon MWS) APIs. This suite will include all the functionality available in Amazon MWS plus over a dozen net new APIs, including APIs for vendors. SP-API is now available for all registered developers worldwide.
+Selling Partner API (SP-API) is a modernized suite of REST APIs utilizing standards that today's developers expect, while making enabling developers to migrate from Amazon Marketplace Web Service (Amazon MWS) APIs. This suite will include all the functionality available in Amazon MWS plus over a dozen net new APIs, including APIs for vendors. SP-API is now available for all registered developers worldwide.
+
 For more information on SP-API, please visit our https://github.com/amzn/selling-partner-api-docs[GitHub repository] for access to the API documentation, use case guides and swagger models. 
 
