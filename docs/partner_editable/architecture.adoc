@@ -10,7 +10,7 @@ image::../images/amazon-selling-partner-api-architecture-diagram.png[Architectur
 
 As shown in <<architecture1>>, the Quick Start sets up the following:
 
-* A secure IAM Role with permissions to call SP API endpoints.
+* A secure IAM Role with permissions to call SP-API endpoints.
 
-* A Lambda function which assumes IAM Role to call SP API endpoints.
+* A Lambda function to assume the IAM Role and call SP-API endpoints.
 
