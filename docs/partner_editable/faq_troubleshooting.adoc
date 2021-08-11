@@ -18,19 +18,19 @@ For more information, see https://docs.aws.amazon.com/AWSCloudFormation/latest/U
 
 == Troubleshooting
 
-*Q.* I cannot create an app on seller central?
+*Q.* I cannot create an app on Seller Central?
 
-*A.* Once the template is deployed, you can create an app on seller central under "Develop Apps" page. If the *"+ Add new app client"* button is inactive, you will first have to fill out developer profile and get it approved before creating an application.
+*A.* You must have a Professional selling plan on https://sellercentral.amazon.com/[Amazon Seller Central] and https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md#registering-as-a-developer[register] as a developer to create Seller Central applications.
 
-*Q.* How do I get the refresh token to test API call?
+*Q.* How do I get the refresh token to test the API call?
 
-*A.* You can either Self-Authorize your application to receive a refresh token for your seller central account. Or, you can provide an OAuth URL to your seller and request them to provide consent to your application to make API calls to their account. Please refer to "Website Authorization Workflow" in the Seller Developer Guide for more information on how to receive access and refresh tokens for a seller.
+*A.* Obtain seller authorization using either the https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md#website-authorization-workflow[website authorization workflow] or https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md#self-authorization[self authorization].
 
 *Q.* I cant see any orders in the API response. What do I do?
 
-*A.* If you are a third-party developer, you should receive authorization from a seller and use their refresh token to call the API. If you self-authorize your application, you would not receive any response as your seller account does not contain any orders.
+*A.* If you are a third-party developer, you must add the refresh token from the seller to `lambda_function.py`. For more information, see link:#post-deployment_steps[Post-deployment steps]. If you self-authorized your application, the API response will not contain orders.
 
-*Q.* I sell in multiple marketplaces in NA, why do I only see orders for a single marketplace?
+*Q.* I sell in multiple marketplaces, why do I only see orders for a single marketplace?
 
-*A.* The tutorial checks which marketplaces does a seller have selling relationship in and then makes a call to get orders for the first marketplace mentioned in the list.
+*A.* This Quick Start deployment makes a call to get orders for the first marketplace in a seller's marketplace list.
 

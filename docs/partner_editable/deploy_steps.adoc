@@ -6,7 +6,7 @@
 === Launch the Quick Start
 
 Each deployment takes about {deployment_time} to complete.
-
+//TODO: Can't find a folder in https://s3.console.aws.amazon.com/s3/buckets/aws-quickstart/?region=us-east-1&tab=objects to make permalinks for deploy and template.
 . Sign in to your AWS account, and choose the following option to launch the AWS CloudFormation template. 
 +
 [cols="3,1"]

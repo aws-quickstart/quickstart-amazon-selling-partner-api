@@ -1,1 +1,1 @@
-This Quick Start supports all Regions mentioned in https://docs.aws.amazon.com/general/latest/gr/rande.html[AWS service endpoints].
+This Quick Start supports all Regions listed in https://docs.aws.amazon.com/general/latest/gr/rande.html[AWS service endpoints].
