@@ -5,42 +5,59 @@
 == Post-deployment steps
 // If post-deployment steps are required, add them here. If not, remove the heading
 
-* Go to AWS IAM Role console https://console.aws.amazon.com/iam/home#/roles/SPAPIIAMRole[here] and note the "Role ARN" value that will be used to create app.
-* Go to your seller central account, "Develop Apps" page under "Apps & Services" menu and click on "+ Add new app client". 
+=== Obtain the IAM role ARN
 
-* Enter App Name and select API Type as "SP API" for pure SP API app. 
+. Open the https://console.aws.amazon.com/iam/[AWS IAM console].
+. In the navigation pane, choose *Roles*.
+. Choose the name of the role that you will use to create the application.
+. Copy the role Amazon Resource Number (ARN).
 
-* Paste the IAM Role ARN copied earlier.
 
-* Select the necessary roles for the application.
+=== Register an app on Seller Central
 
-* Configure Login and Redirect URLs on your application (Optional for private developers).
+. Sign into https://sellercentral.amazon.com/[Seller Central] using the credentials that you used to register as a developer.
+. Choose *Develop Apps* from the *Apps & Services* menu.
+. Choose *Add new app client*. 
+. On the *App registration* page, enter an app name.
+. Choose *SP API* from the *API Type* drop-down list.
+. For *IAM ARN*, enter the role ARN you copied previously.
+. Select the pertinent application roles.
+. Enter OAuth login and redirect URIs. These parameters are optional for private seller and vendor applications.
+. Choose *Save and exit*.
+. Choose *Develop Apps* from the *Apps & Services* menu.
+. Choose *View* under LWA credentials for the app you registered previously.
+. Copy the client identifier and client secret. You will enter these on lines 26 and 27, respectively, of `lambda_function.py` later.
 
-* Click "Save and Exit".
+=== Obtain seller authorization
 
-* Open Lambda function created by QuickStart and double-click on "lambda_function.py" to open up Lambda function code.
+Obtain seller authorization using either the https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md#website-authorization-workflow[website authorization workflow] or https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md#self-authorization[self authorization]. You will enter the `refresh_token` on line 32 of `lambda_function.py` later.
 
-* On the Developer console, you will be able to see your app client credentials by clicking on "View" in front of your application. Copy the "Client identifier" and "Client secret" values and paste it in the Lambda function code on line 26 and line 27.
 
-* On the developer console, you will be able to see your recently created application. Use this application to receive authorization from your seller using one of two authorization flows https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md#website-authorization-workflow["Website Workflow"] or https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md#self-authorization["Self-Authorization Workflow"] mentioned in the seller developer guide.
+=== Edit and test the AWS Lambda function
 
-* Once you receive authorization tokens from a seller, copy the "refresh_token" and paste it in the Lambda function code on line 32.
+. Open the https://console.aws.amazon.com/lambda/[AWS Lambda console].
+. In the navigation pane, choose *Functions*.
+. Choose the name of the Lambda function created by the Selling Partner API Quick Start.
+//TODO: What's the name of this function?
+. On the *Code* tab, choose `lambda_function.py` in *Environment* window.
+. On line 26, enter the client identifier you copied previously.
+. On line 27, enter the client secret.
+. On line 32, enter the `refresh_token` you received previously from the seller.
+. Choose *Deploy*.
+. Choose *Test*.
+. On the *Configure test event* dialog, enter an event name and choose *Create*.
+. Choose *Test*.
+//TODO: What does a successful Execution result tab look like?
 
-* Click on "Deploy" to save changes to the Lambda function code.
-
-* Click on "Test" and add some name to "Event name". Click on "Create".
-
-* Click on "Test" to execute the Lambda function to run the sample code and to call SP API endpoints.
 
 == Best practices for using SP API on AWS
 // Provide post-deployment best practices for using the technology on AWS, including considerations such as migrating data, backups, ensuring high performance, high availability, etc. Link to software documentation for detailed information.
-
-* Please refer to https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md[Selling Partner API Developer Guide] for more information about SP API setup.
+For more information about SP-API best practices, see the https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md[Selling Partner API Developer Guide].
 
 
 == Security
 // Provide post-deployment best practices for using the technology on AWS, including considerations such as migrating data, backups, ensuring high performance, high availability, etc. Link to software documentation for detailed information.
 
-* The use of IAM Role in SP API is a more secure way of interacting with the APIs.
-* The temporary credentials received from the IAM Role are valid for one hour. If someone gets access to the temporary credentials, it wouldnt cause much damage as it would be valid only for one hour.
+* Use of an IAM role that has permissions to call Selling Partner API is a best practice for interacting with the Selling Partner APIs.
+* The temporary credentials received from the IAM role are valid only for one hour.
 

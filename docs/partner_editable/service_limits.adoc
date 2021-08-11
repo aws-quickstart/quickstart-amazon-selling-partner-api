@@ -3,6 +3,6 @@
 |Resource |This deployment uses
 
 // Space needed to maintain table headers
-|AWS Identity and Access Management (IAM) roles |2
+|IAM roles |2
 |AWS Lambda functions |1
 |===
