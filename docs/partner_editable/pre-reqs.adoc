@@ -2,5 +2,4 @@
 
 ==== Prepare your Seller Central account
 
-Make sure you are subscribed to Professional selling account in order to develop apps.
-You should have primary user credentials for Seller Central account to create and edit application on Seller Central.
+You must have a Professional selling plan on https://sellercentral.amazon.com/[Amazon Seller Central] and https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md#registering-as-a-developer[register] as a developer to create Seller Central applications.

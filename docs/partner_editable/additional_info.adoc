@@ -58,6 +58,6 @@ For more information about SP-API best practices, see the https://github.com/amz
 == Security
 // Provide post-deployment best practices for using the technology on AWS, including considerations such as migrating data, backups, ensuring high performance, high availability, etc. Link to software documentation for detailed information.
 
-* The use IAM user that assumes an IAM role that has permissions to call Selling Partner API is a best practice for interacting with the Selling Partner APIs.
+* Use of an IAM role that has permissions to call Selling Partner API is a best practice for interacting with the Selling Partner APIs.
 * The temporary credentials received from the IAM role are valid only for one hour.
 
