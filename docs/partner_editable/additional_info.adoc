@@ -52,12 +52,12 @@ Obtain seller authorization using either the https://github.com/amzn/selling-par
 
 == Best practices for using SP API on AWS
 // Provide post-deployment best practices for using the technology on AWS, including considerations such as migrating data, backups, ensuring high performance, high availability, etc. Link to software documentation for detailed information.
-For more information about SP-API setup, see https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md[Selling Partner API Developer Guide].
+For more information about SP-API best practices, see the https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md[Selling Partner API Developer Guide].
 
 
 == Security
 // Provide post-deployment best practices for using the technology on AWS, including considerations such as migrating data, backups, ensuring high performance, high availability, etc. Link to software documentation for detailed information.
 
-* The use of IAM Role in SP API is a more secure way of interacting with the APIs.
-* The temporary credentials received from the IAM Role are valid for one hour. If someone gets access to the temporary credentials, it wouldnt cause much damage as it would be valid only for one hour.
+* The use IAM user that assumes an IAM role that has permissions to call Selling Partner API is a best practice for interacting with the Selling Partner APIs.
+* The temporary credentials received from the IAM role are valid only for one hour.
 
