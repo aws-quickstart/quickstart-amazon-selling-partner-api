@@ -5,13 +5,13 @@
 == Post-deployment steps
 // If post-deployment steps are required, add them here. If not, remove the heading
 
-=== Obtain the IAM role ARN
+
+=== Copy the IAM role ARN
 
 . Open the https://console.aws.amazon.com/iam/[AWS IAM console].
 . In the navigation pane, choose *Roles*.
 . Choose the name of the role that you will use to create the application.
 . Copy the role Amazon Resource Number (ARN).
-
 
 === Register an app on Seller Central
 
@@ -46,9 +46,7 @@ Obtain seller authorization using either the https://github.com/amzn/selling-par
 . Choose *Deploy*.
 . Choose *Test*.
 . On the *Configure test event* dialog, enter an event name and choose *Create*.
-. Choose *Test*.
-//TODO: What does a successful Execution result tab look like?
-
+. Choose *Test*. The *Execution results* tab shows the status and details of the test.
 
 == Best practices for using SP API on AWS
 // Provide post-deployment best practices for using the technology on AWS, including considerations such as migrating data, backups, ensuring high performance, high availability, etc. Link to software documentation for detailed information.

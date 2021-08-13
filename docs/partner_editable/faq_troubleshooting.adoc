@@ -20,11 +20,11 @@ For more information, see https://docs.aws.amazon.com/AWSCloudFormation/latest/U
 
 *Q.* I cannot create an app on Seller Central?
 
-*A.* You must have a Professional selling plan on https://sellercentral.amazon.com/[Amazon Seller Central] and https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md#registering-as-a-developer[register] as a developer to create Seller Central applications.
+*A.* You must have a Professional selling plan on https://sellercentral.amazon.com/[Amazon Seller Central^] and https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md#registering-as-a-developer[register^] as a developer to create Seller Central applications.
 
 *Q.* How do I get the refresh token to test the API call?
 
-*A.* Obtain seller authorization using either the https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md#website-authorization-workflow[website authorization workflow] or https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md#self-authorization[self authorization].
+*A.* Obtain seller authorization using either the https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md#website-authorization-workflow[website authorization workflow^] or https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md#self-authorization[self authorization^].
 
 *Q.* I cant see any orders in the API response. What do I do?
 
