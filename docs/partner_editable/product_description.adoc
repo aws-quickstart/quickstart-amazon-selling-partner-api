@@ -2,7 +2,7 @@
 // Briefly describe the software. Use consistent and clear branding. 
 // Include the benefits of using the software on AWS, and provide details on usage scenarios.
 
-This Quick Start deploys {partner-product-short-name} on the Amazon Web Services (AWS) Cloud. It configures an AWS Identity and Access Management (IAM) role to streamline your {partner-product-short-name} onboarding. In addition, it provides a sample AWS Lambda application to demonstrate AWS best practices for {partner-product-short-name} integration. After deployment, you input your application’s client identifier, secret, and seller refresh token into the sample application code to test connectivity to {partner-product-short-name} endpoints.
+This Quick Start deploys {partner-product-short-name} on the Amazon Web Services (AWS) Cloud. It configures an AWS Identity and Access Management (IAM) role to streamline your {partner-product-short-name} onboarding. In addition, it provides a sample AWS Lambda application to demonstrate AWS best practices for {partner-product-short-name} integration. After deployment, input your application’s client identifier, secret, and seller refresh token into the sample application code to test connectivity to {partner-product-short-name} endpoints. For more information, see link:#_post_deployment_steps[Post-deployment steps] later in this guide.
 
 https://developer.amazonservices.com/[SP-API^] is a suite of REST-based APIs providing Amazon Selling Partners programmatic access to their Amazon Seller Central account data. With it, you can build applications that help sellers and vendors manage their Amazon business. You must have a Professional selling plan on Amazon Seller Central and register as a developer to create Seller Central applications.
 
