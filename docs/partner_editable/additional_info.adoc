@@ -21,7 +21,7 @@
 . On the *App registration* page, enter an app name.
 . Choose *SP API* from the *API Type* drop-down list.
 . For *IAM ARN*, enter the role ARN you copied previously.
-. Select the pertinent application roles.
+. Choose the pertinent application roles.
 . Enter OAuth login and redirect URIs. These parameters are optional for private seller and vendor applications.
 . Choose *Save and exit*.
 . Choose *Develop Apps* from the *Apps & Services* menu.
@@ -45,7 +45,7 @@ Obtain seller authorization using either the https://github.com/amzn/selling-par
 . On line 32, enter the refresh token you received previously from the seller.
 . Choose *Deploy*.
 . Choose *Test*.
-. On the *Configure test event* dialog, enter an event name and choose *Create*.
+. On the *Configure test event* dialog box, enter an event name, and choose *Create*.
 . Choose *Test*. The *Execution results* tab shows the status and details of the test.
 
 == Best practices for using SP API on AWS
