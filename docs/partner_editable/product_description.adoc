@@ -6,4 +6,4 @@ This Quick Start deploys {partner-product-short-name} on the Amazon Web Services
 
 https://developer.amazonservices.com/[SP-API^] is a suite of REST-based APIs providing Amazon Selling Partners programmatic access to their Amazon Seller Central account data. With it, you can build applications that help sellers and vendors manage their Amazon business. You must have a Professional selling plan on Amazon Seller Central and register as a developer to create Seller Central applications.
 
-For more information on SP-API, please visit our https://github.com/amzn/selling-partner-api-docs[GitHub repository^] for access to the API documentation, use case guides, and swagger models. 
+For more information on SP-API, see the https://github.com/amzn/selling-partner-api-docs[Selling Partner API documentations repository^]. 
