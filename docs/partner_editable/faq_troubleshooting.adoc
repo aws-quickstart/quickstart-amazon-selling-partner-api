@@ -4,7 +4,7 @@
 
 *Q.* I encountered a *CREATE_FAILED* error when I launched the Quick Start.
 
-*A.* If AWS CloudFormation fails to create the stack, relaunch the template with *Rollback on failure* set to *Disabled*. This setting is under *Advanced* in the AWS CloudFormation console on the *Configure stack options* page. With this setting, the stack’s state is retained, and the instance keeps running so that you can troubleshoot the issue. (For Windows, look at the log files in `%ProgramFiles%\Amazon\EC2ConfigService` and `C:\cfn\log`.)
+*A.* If AWS CloudFormation fails to create the stack, relaunch the template with *Rollback on failure* set to *Disabled*. This setting is under *Advanced* in the AWS CloudFormation console on the *Configure stack options* page. With this setting, the stack’s state is retained, and the instance keeps running so that you can troubleshoot the issue. (For Windows, look at the log files in *%ProgramFiles%\Amazon\EC2ConfigService* and *C:\cfn\log*.)
 // Customize this answer if needed. For example, if you’re deploying on Linux instances, either provide the location for log files on Linux or omit the final sentence. If the Quick Start has no EC2 instances, revise accordingly (something like "and the assets keep running").
 
 WARNING: When you set *Rollback on failure* to *Disabled*, you continue to incur AWS charges for this stack. Delete the stack when you finish troubleshooting.
@@ -18,7 +18,7 @@ For more information, see https://docs.aws.amazon.com/AWSCloudFormation/latest/U
 
 == Troubleshooting
 
-*Q.* I cannot create an app on Seller Central?
+*Q.* I cannot create an app on Seller Central.
 
 *A.* You must have a Professional selling plan on https://sellercentral.amazon.com/[Amazon Seller Central^] and https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md#registering-as-a-developer[register^] as a developer to create Seller Central applications.
 
@@ -28,9 +28,9 @@ For more information, see https://docs.aws.amazon.com/AWSCloudFormation/latest/U
 
 *Q.* I cant see any orders in the API response. What do I do?
 
-*A.* If you are a third-party developer, you must add the refresh token from the seller to `lambda_function.py`. For more information, see link:#post-deployment_steps[Post-deployment steps]. If you self-authorized your application, the API response will not contain orders.
+*A.* If you are a third-party developer, you must add the refresh token from the seller to *lambda_function.py*. For more information, see link:#post-deployment_steps[Post-deployment steps]. If you self-authorized your application, the API response will not contain orders.
 
-*Q.* I sell in multiple marketplaces, why do I only see orders for a single marketplace?
+*Q.* I sell in multiple marketplaces on Amazon Seller Central, why do I only see orders for a single marketplace?
 
-*A.* This Quick Start deployment makes a call to get orders for the first marketplace in a seller's marketplace list.
+*A.* This Quick Start deployment makes a call to get orders in the first marketplace in a seller's marketplace list. For more information, see https://sellercentral.amazon.com/gp/help/external/G202121600?language=en_US[Choose your source and target marketplaces].
 

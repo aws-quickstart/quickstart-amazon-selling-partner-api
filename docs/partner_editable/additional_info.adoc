@@ -21,16 +21,16 @@
 . On the *App registration* page, enter an app name.
 . Choose *SP API* from the *API Type* drop-down list.
 . For *IAM ARN*, enter the role ARN you copied previously.
-. Select the pertinent application roles.
+. Choose the pertinent application roles.
 . Enter OAuth login and redirect URIs. These parameters are optional for private seller and vendor applications.
 . Choose *Save and exit*.
 . Choose *Develop Apps* from the *Apps & Services* menu.
 . Choose *View* under LWA credentials for the app you registered previously.
-. Copy the client identifier and client secret. You will enter these on lines 26 and 27, respectively, of `lambda_function.py` later.
+. Copy the client identifier and client secret. You will enter these on lines 26 and 27, respectively, of *lambda_function.py* later.
 
 === Obtain seller authorization
 
-Obtain seller authorization using either the https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md#website-authorization-workflow[website authorization workflow] or https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md#self-authorization[self authorization]. You will enter the `refresh_token` on line 32 of `lambda_function.py` later.
+Obtain seller authorization using either the https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md#website-authorization-workflow[website authorization workflow] or https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md#self-authorization[self authorization]. You will enter the refresh token on line 32 of *lambda_function.py* later.
 
 
 === Edit and test the AWS Lambda function
@@ -39,13 +39,13 @@ Obtain seller authorization using either the https://github.com/amzn/selling-par
 . In the navigation pane, choose *Functions*.
 . Choose the name of the Lambda function created by the Selling Partner API Quick Start.
 //TODO: What's the name of this function?
-. On the *Code* tab, choose `lambda_function.py` in *Environment* window.
+. On the *Code* tab, choose *lambda_function.py* in *Environment* window.
 . On line 26, enter the client identifier you copied previously.
 . On line 27, enter the client secret.
-. On line 32, enter the `refresh_token` you received previously from the seller.
+. On line 32, enter the refresh token you received previously from the seller.
 . Choose *Deploy*.
 . Choose *Test*.
-. On the *Configure test event* dialog, enter an event name and choose *Create*.
+. On the *Configure test event* dialog box, enter an event name, and choose *Create*.
 . Choose *Test*. The *Execution results* tab shows the status and details of the test.
 
 == Best practices for using SP API on AWS
@@ -56,6 +56,6 @@ For more information about SP-API best practices, see the https://github.com/amz
 == Security
 // Provide post-deployment best practices for using the technology on AWS, including considerations such as migrating data, backups, ensuring high performance, high availability, etc. Link to software documentation for detailed information.
 
-* Use of an IAM role that has permissions to call Selling Partner API is a best practice for interacting with the Selling Partner APIs.
+* Use of an IAM role with permission to call SP-API is a best practice.
 * The temporary credentials received from the IAM role are valid only for one hour.
 
