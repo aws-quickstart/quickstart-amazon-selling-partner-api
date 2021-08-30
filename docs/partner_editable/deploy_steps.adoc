@@ -11,8 +11,8 @@ Sign in to your AWS account, and choose the following option to launch the AWS C
 
 [cols="3,1"]
 |===
-^|http://qs_launch_permalink[Deploy Selling Partner API on AWS^]
-^|http://qs_template_permalink[View template^]
+^|https://fwd.aws/PzJVq?[Deploy Selling Partner API on AWS^]
+^|https://fwd.aws/9gYGW?[View template^]
 |===
 
 . Check the AWS Region that’s displayed in the upper-right corner of the navigation bar, and change it if necessary. This Region is where you build the network infrastructure. The template is launched in the {default_deployment_region} Region by default. For more information, see link:#_supported_aws_regions[Supported AWS Regions] earlier in this guide.
