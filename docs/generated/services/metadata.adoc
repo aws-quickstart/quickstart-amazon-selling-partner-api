@@ -1,1 +1,5 @@
-// placeholder
+
+:template_aws_iam_role:
+:template_aws_lambda_function:
+:template_iam:
+:template_lambda:
