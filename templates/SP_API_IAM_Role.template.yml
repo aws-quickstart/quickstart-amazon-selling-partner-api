@@ -28,6 +28,8 @@ Parameters:
       a forward slash. See https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html 
       and https://aws-quickstart.github.io/option1.html.
     Type: String
+Conditions:
+  UsingDefaultBucket: !Equals [!Ref QSS3BucketName, 'aws-quickstart']
 Resources:
   SPAPIIAMRole:
     Type: AWS::IAM::Role
@@ -79,6 +81,9 @@ Resources:
       Handler: lambda_function.lambda_handler
       Role: !GetAtt 'LambdaExecutionRole.Arn'
       Code:
-        S3Bucket: !Ref 'QSS3BucketName'
+        S3Bucket: !If
+          - UsingDefaultBucket
+          - !Sub '${QSS3BucketName}-${AWS::Region}'
+          - !Ref QSS3BucketName
         S3Key: !Sub '${QSS3KeyPrefix}functions/packages/ExampleLambda/lambda.zip'
       Runtime: python3.8
