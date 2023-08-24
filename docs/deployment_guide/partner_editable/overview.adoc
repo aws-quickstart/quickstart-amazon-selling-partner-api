@@ -1,10 +1,9 @@
 This guide covers the information you need to deploy the {partner-product-name} Partner Solution in the AWS Cloud.
 
-// Fill in the info in <angle brackets> for use on the landing page only: 
-This Amazon Web Services (AWS) Partner Solution deploys [<product name>](<partner's marketing product page>) in the AWS Cloud so that <purpose>. This solution is for <target users> who want to <do what> so that <why>. For more information, refer to the [<product name> documentation](<URL>).
+It is for users who want to set up AWS resources in their AWS account to provide SP-API integration using AWS best practices.
 
-// Deploying this solution does not guarantee an organization’s compliance with any laws, certifications, policies, or other regulations. [Uncomment this statement only for solutions that relate to compliance. We'll add the corresponding reference part to the landing page and get legal approval before publishing.]
+This Partner Solution deploys {partner-product-short-name} on the Amazon Web Services (AWS) Cloud. It configures an AWS Identity and Access Management (IAM) role to streamline your {partner-product-short-name} onboarding. In addition, it provides a sample AWS Lambda application to demonstrate AWS best practices for {partner-product-short-name} integration. After deployment, input your application’s client identifier, secret, and seller refresh token into the sample application code to test connectivity to {partner-product-short-name} endpoints. For more information, see link:#_post_deployment_steps[Post-deployment steps] later in this guide.
 
-// For advanced information about the product, troubleshooting, or additional functionality, refer to the https://{partner-solution-github-org}.github.io/{partner-solution-project-name}/operational/index.html[Operational Guide^].
+https://developer.amazonservices.com/[SP-API^] is a suite of REST-based APIs providing Amazon Selling Partners programmatic access to their Amazon Seller Central account data. With it, you can build applications that help sellers and vendors manage their Amazon business. You must have a Professional selling plan on Amazon Seller Central and register as a developer to create Seller Central applications.
 
-// For information about using this Partner Solution for migrations, refer to the https://{partner-solution-github-org}.github.io/{partner-solution-project-name}/migration/index.html[Migration Guide^].
+For more information on SP-API, see the https://github.com/amzn/selling-partner-api-docs[Selling Partner API documentations repository^]. 

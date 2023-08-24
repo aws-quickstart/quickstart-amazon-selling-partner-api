@@ -1,3 +1,5 @@
-//Include any predeployment steps here, such as signing up for a Marketplace AMI or making any changes to a partner account. If there are no predeployment steps, leave this file empty.
-
 == Predeployment steps
+
+=== Prepare your Seller Central account
+
+You must have a Professional selling plan on https://sellercentral.amazon.com/[Amazon Seller Central^] and https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md#registering-as-a-developer[register^] as a developer to create Seller Central applications.

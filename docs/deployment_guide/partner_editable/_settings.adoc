@@ -1,17 +1,12 @@
-:partner-solution-project-name: partner-solution-repo-name
+:partner-solution-project-name: quickstart-amazon-selling-partner-api
 :partner-solution-github-org: aws-quickstart
-:partner-product-name: Full Product Name
-:partner-product-short-name: Product Name
-:partner-company-name: Example Company Name, Ltd.
-:doc-month: January
-:doc-year: 2023
+:partner-product-name: Selling Partner API
+:partner-product-short-name: SP-API
+:partner-company-name: Amazon.com Services LLC
+:doc-month: August
+:doc-year: 2021
 :partner-contributors: John Smith, {partner-company-name}
-// :other-contributors: Akua Mansa, Trek10
-:aws-contributors: Janine Singh, AWS IoT Partner team
-:aws-ia-contributors: Toni Jones, AWS Integration & Automation team
-:deployment_time: 15 minutes
+:other-contributors: Rugved Dighe, Selling Partner Services team
+:aws-ia-contributors: Andrew Glenn, AWS Integration & Automation team
+:deployment_time: 5 minutes
 :default_deployment_region: us-east-1
-// :private_repo:
-
-
-// For instructions on creating this deployment guide, refer to "Build your AWS Partner Solution documentation" (https://aws-ia-us-west-2.s3.us-west-2.amazonaws.com/docs/content/index.html#/).

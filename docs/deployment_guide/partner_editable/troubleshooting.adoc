@@ -2,5 +2,18 @@
 
 For troubleshooting common Partner Solution issues, refer to the https://fwd.aws/rA69w?[AWS Partner Solution General Information Guide^] and https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/troubleshooting.html[Troubleshooting CloudFormation^].
 
-// == Resources
-// Uncomment section and add links to any external resources that are specified by the partner.
+*Q.* I cannot create an app on Seller Central.
+
+*A.* You must have a Professional selling plan on https://sellercentral.amazon.com/[Amazon Seller Central^] and https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md#registering-as-a-developer[register^] as a developer to create Seller Central applications.
+
+*Q.* How do I get the refresh token to test the API call?
+
+*A.* Obtain seller authorization using either the https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md#website-authorization-workflow[website authorization workflow^] or https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md#self-authorization[self authorization^].
+
+*Q.* I cant see any orders in the API response. What do I do?
+
+*A.* If you are a third-party developer, you must add the refresh token from the seller to *lambda_function.py*. For more information, see link:#post-deployment_steps[Post-deployment steps]. If you self-authorized your application, the API response will not contain orders.
+
+*Q.* I sell in multiple marketplaces on Amazon Seller Central, why do I only see orders for a single marketplace?
+
+*A.* This Quick Start deployment makes a call to get orders in the first marketplace in a seller's marketplace list. For more information, see https://sellercentral.amazon.com/gp/help/external/G202121600?language=en_US[Choose your source and target marketplaces].
